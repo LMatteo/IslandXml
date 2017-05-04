@@ -64,7 +64,7 @@
 
 	<element>
 		<data>
-			<action>exploit</action>
+			<action>transform</action>
 			<parameters>
 				<unit>
 					<resource>WOOD</resource>
@@ -124,12 +124,11 @@
 		<data>
 			<cost>2</cost>
 			<extras>
-				<extras>
-					<altitude>1</altitude>
-					<resources>
-						<resource>FUR</resource>
-						<resource>WOOD</resource>
-					</resources>
+				<altitude>1</altitude>
+				<resources>
+					<resource>FUR</resource>
+					<resource>WOOD</resource>
+				</resources>
 			</extras>
 			<status>OK</status>
 		</data>
@@ -200,22 +199,5 @@
 		<time>16815132</time>
 		<meth>takeDecision</meth>
 	</element>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </championship>
