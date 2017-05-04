@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE championship [
+	<!ELEMENT championship (initialization,(element)*)>
+		<!ELEMENT initialization (data,part,time,meth)>
+		<!ELEMENT element ((data,part,time,meth)|)>
+		<!ELEMENT data (cost,extras,status)>
+		<!ELEMENT extras ((action|(heading,men,contracts,budget)|(action,parameters)|(range,found)|(biomes,creeks,sites)|(altitude,resources)|(asked_range,report)|(exlorations,pois)|(production,kind))?)>
+		<!ELEMENT action (#PCDATA)>
+		<!ELEMENT part (Engine|Explorer)>
+		<!ELEMENT time (#PCDATA)>
+		<!ELEMENT meth (initialize|takeDecision)>
+		<!ELEMENT heading (#PCDATA)>
+		<!ELEMENT men (#PCDATA)>
+		<!ELEMENT contracts (contract)+>
+		<!ELEMENT budget (#PCDATA)>
+		<!ELEMENT parameters ((direction,range)|(creek,people)|(unit)+)>
+		<!ELEMENT direction (#PCDATA)>
+		<!ELEMENT range (#PCDATA)>
+		<!ELEMENT creek (#PCDATA)>
+		<!ELEMENT people (#PCDATA)>
+		<!ELEMENT unit (resource,quantity)>
+		<!ELEMENT resource (#PCDATA)>
+		<!ELEMENT quantity (#PCDATA)>
+		<!ELEMENT range (#PCDATA)>
+		<!ELEMENT found (#PCDATA)>
+		<!ELEMENT biomes (biome)*>
+		<!ELEMENT creeks (creek)*>
+		<!ELEMENT sites (site)*>
+		<!ELEMENT altitude (#PCDATA)>
+		<!ELEMENT resources (resource|)*>
+		<!ELEMENT asked_range (#PCDATA)>
+		<!ELEMENT report (tile)*>
+		<!ELEMENT tile ((resource,percentage)|resource)*>
+		<!ELEMENT percentage (#PCDATA)>
+		<!ELEMENT exlorations (amount,resource,cond)>
+		<!ELEMENT amount (#PCDATA)>
+		<!ELEMENT resource (#PCDATA)>
+		<!ELEMENT cond (#PCDATA)>
+		<!ELEMENT pois (zone)*>
+		<!ELEMENT zone (kind,id)>
+		<!ELEMENT kind (#PCDATA)>
+		<!ELEMENT id (#PCDATA)>
+		<!ELEMENT production (#PCDATA)>
+
+]>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="style2.css" type="text/css" ?>
+<!DOCTYPE championship SYSTEM "island.dtd">
+
+<championship>
+
+	<initialization>
+		<data>
+			<heading>S</heading>
+			<men>10</men>
+			<contracts>
+				<contract>
+					<amount>400</amount>
+					<resource>RUM</resource>
+				</contract>
+				<contract>
+					<amount>2000</amount>
+					<resource>WOOD</resource>
+				</contract>
+			</contracts>
+			<budget>30000</budget>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>initialize</meth>
+	</initialization>
+
+	<!--  REQUEST -->
+
+	<element>
+		<data>
+			<action>fly</action>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<action>heading</action>
+			<parameters>
+				<direction>N</direction>
+				<range>2</range>
+			</parameters>
+		</data>
+		<part>Explorer</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<action>land</action>
+			<parameters>
+				<creek>id</creek>
+				<people>42</people>
+			</parameters>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<action>exploit</action>
+			<parameters>
+				<unit>
+					<resource>WOOD</resource>
+					<quantity>6</quantity>
+				</unit>
+				<unit>
+					<resource>QUARTZ</resource>
+					<quantity>11</quantity>
+				</unit>
+			</parameters>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+
+	<!--  ANSWERS -->
+
+	<element>
+		<data>
+			<cost>2</cost>
+			<extras>
+				<range>2</range>
+				<found>GROUND</found>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<cost>2</cost>
+			<extras>
+				<biomes>
+					<biome>GLACIER</biome>
+					<biome>ALPINE</biome>
+					<creeks>
+						<creek>id</creek>
+					</creeks>
+					<sites>
+						<site>toto</site>
+					</sites>
+				</biomes>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<cost>2</cost>
+			<extras>
+				<extras>
+					<altitude>1</altitude>
+					<resources>
+						<resource>FUR</resource>
+						<resource>WOOD</resource>
+					</resources>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<cost>3</cost>
+			<extras>
+				<asked_range>4</asked_range>
+				<report>
+					<tile>
+						<resource>BEACH</resource>
+						<percentage>59.35</percentage>
+					</tile>
+					<tile>
+						<resource>OCEAN</resource>
+					</tile>
+				</report>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<cost>5</cost>
+			<extras>
+				<resources>
+					<explorations>
+						<exploration>
+							<amount>HIGH</amount>
+							<resource>FUR</resource>
+							<cond>FAIR</cond>
+						</exploration>
+					</explorations>
+				</resources>
+				<pois>
+					<zone>
+						<kind>Creek</kind>
+						<id>43e3eb42-50f0-47c5-afa3-16cd3d50faff</id>
+					</zone>
+				</pois>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+	<element>
+		<data>
+			<cost>5</cost>
+			<extras>
+				<production>1</production>
+				<kind>GLASS</kind>
+			</extras>
+			<status>OK</status>
+		</data>
+		<part>Engine</part>
+		<time>16815132</time>
+		<meth>takeDecision</meth>
+	</element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</championship>
