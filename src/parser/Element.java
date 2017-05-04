@@ -1,17 +1,19 @@
 package parser;
 
 import org.json.JSONObject;
+import parser.tagBuilder.TagBuilder;
+import parser.tagBuilder.TagFly;
 
 public enum Element {
     FLY {
         @Override
         public String getName() {
-            return null;
+            return "fly";
         }
 
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return null;
+            return new TagFly(action,answer);
         }
     };
 

@@ -1,5 +1,17 @@
 package parser;
 import org.json.*;
+import parser.tagBuilder.TagBuilder;
+
+import org.w3c.dom.*;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 /*
     ON UTILISE PAS MAVEN ON OUBLIE PAS D'AJOUTER LE JAR AU PROJET
@@ -7,22 +19,31 @@ import java.io.*;
 */
 
 public class Parser {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         String fileName = args[0];
+
+        Document document;
+        DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+
+        document = docBuilder.newDocument();
+
+        org.w3c.dom.Element rootElement = document.createElement("Championship");
+        document.appendChild(rootElement);
+
 
         //on crée le json à partir du fichier
         JSONArray json = new JSONArray(readFile(fileName));
-
-        //on instancie le writer
-        PrintWriter writer = new PrintWriter("toXml.xml");
 
         //TODO : gérer l'ecriture de l'initialisation
 
         //on parcourt le tableau 2 à 2
         //l'action et la réponse sont traitées ensemble pour plus de facilité
         for(int i = 1;i<json.length();i += 2){
-            write(json,i,writer);
+            createDoc(json,i,rootElement,document);
         }
+
+        printXml(document);
+
 
     }
 
@@ -39,7 +60,7 @@ public class Parser {
         return fileContent.toString();
     }
 
-    public static void write(JSONArray arr,int i,PrintWriter writer){
+    private static void createDoc(JSONArray arr, int i, org.w3c.dom.Element element, Document doc){
         //à changer
         String currentAction = arr.getJSONObject(i).getJSONObject("data").getString("action");
 
@@ -49,9 +70,23 @@ public class Parser {
             if(elem.getName().equals(currentAction)){
 
                 TagBuilder builder = elem.getBuilder(arr.getJSONObject(i),arr.getJSONObject(i+1));
-                writer.write(builder.getActionXml());
-                writer.write(builder.getAnswerXml());
+                builder.getActionXml(element,doc );
+                builder.getAnswerXml(element,doc );
             }
         }
+    }
+
+    private static void printXml(Document doc) throws IOException,TransformerException{
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+        transformer.transform(new DOMSource(doc),
+                new StreamResult(new OutputStreamWriter(new FileOutputStream("./xml.xml"), "UTF-8")));
+
     }
 }
