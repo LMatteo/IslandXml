@@ -102,13 +102,13 @@
 				<biomes>
 					<biome>GLACIER</biome>
 					<biome>ALPINE</biome>
-					<creeks>
-						<creek>id</creek>
-					</creeks>
-					<sites>
-						<site>toto</site>
-					</sites>
 				</biomes>
+				<sites>
+					<site>toto</site>
+				</sites>
+				<creeks>
+					<creek>id</creek>
+				</creeks>
 			</extras>
 			<status>OK</status>
 		</data>

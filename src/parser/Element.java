@@ -58,6 +58,17 @@ public enum Element {
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagEcho(action,answer);
         }
+    },
+    SCAN {
+        @Override
+        public String getName() {
+            return "scan";
+        }
+
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
+            return new TagScan(action,answer);
+        }
     };
 
     public abstract String getName();
