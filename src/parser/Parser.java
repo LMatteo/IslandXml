@@ -70,8 +70,8 @@ public class Parser {
             if(elem.getName().equals(currentAction)){
 
                 TagBuilder builder = elem.getBuilder(arr.getJSONObject(i),arr.getJSONObject(i+1));
-                builder.getActionXml(element,doc );
-                builder.getAnswerXml(element,doc );
+                element.appendChild(builder.getActionXml(doc));
+                element.appendChild(builder.getAnswerXml(doc));
             }
         }
     }

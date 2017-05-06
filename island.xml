@@ -22,7 +22,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>initialize</meth>
 	</initialization>
 
 	<!--  REQUEST -->
@@ -33,7 +32,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -95,7 +93,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -117,7 +114,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -134,7 +130,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -156,7 +151,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -183,7 +177,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 	<element>
@@ -197,7 +190,6 @@
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 </championship>

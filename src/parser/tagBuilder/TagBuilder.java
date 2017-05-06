@@ -15,7 +15,7 @@ public abstract class TagBuilder {
         this.name = name;
     }
 
-    public void getActionXml(Element championship, Document doc){
+    public Element getActionXml(Document doc){
         Element element = doc.createElement("element");
         Element data = doc.createElement("data");
         Element action = doc.createElement("action");
@@ -31,9 +31,9 @@ public abstract class TagBuilder {
         time.appendChild(doc.createTextNode(String.valueOf(request.getLong("time"))));
         element.appendChild(time);
 
-        championship.appendChild(element);
+        return element;
     }
-    public void getAnswerXml(Element championship, Document doc) {
+    public Element getAnswerXml(Document doc) {
         Element element = doc.createElement("element");
 
         Element data = doc.createElement("data");
@@ -61,7 +61,7 @@ public abstract class TagBuilder {
         time.appendChild(doc.createTextNode(String.valueOf(answer.getLong("time"))));
         element.appendChild(time);
 
-        championship.appendChild(element);
+        return element;
 
 
     }
