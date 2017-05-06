@@ -47,6 +47,17 @@ public enum Element {
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagMoveTo(action,answer);
         }
+    },
+    ECHO {
+        @Override
+        public String getName() {
+            return "echo";
+        }
+
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
+            return new TagEcho(action,answer);
+        }
     };
 
     public abstract String getName();
