@@ -1,10 +1,7 @@
 package parser;
 
 import org.json.JSONObject;
-import parser.tagBuilder.TagBuilder;
-import parser.tagBuilder.TagFly;
-import parser.tagBuilder.TagHeading;
-import parser.tagBuilder.TagStop;
+import parser.tagBuilder.*;
 
 public enum Element {
     FLY {
@@ -38,6 +35,17 @@ public enum Element {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagHeading(action,answer);
+        }
+    },
+    MOVETO {
+        @Override
+        public String getName() {
+            return "move_to";
+        }
+
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
+            return new TagMoveTo(action,answer);
         }
     };
 
