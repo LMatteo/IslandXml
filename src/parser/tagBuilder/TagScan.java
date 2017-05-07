@@ -5,31 +5,32 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import parser.Tag;
 
 public class TagScan extends TagBuilder {
     public TagScan(JSONObject request, JSONObject answer) {
-        super(request, answer, "scan");
+        super(request, answer, Tag.SCAN.getName());
     }
 
     @Override
     public Element getAnswerXml(Document doc) {
         Element element = super.getAnswerXml(doc);
 
-        NodeList list = element.getElementsByTagName("data");
+        NodeList list = element.getElementsByTagName(Constant.data);
         Element data =(Element) list.item(0);
 
-        Element extras = (Element) data.getElementsByTagName("extras").item(0);
+        Element extras = (Element) data.getElementsByTagName(Constant.extras).item(0);
 
-        JSONObject extrasJson = answer.getJSONObject("data").getJSONObject("extras");
+        JSONObject extrasJson = answer.getJSONObject(Constant.data).getJSONObject(Constant.extras);
 
-        Element biomes = doc.createElement("biomes");
-        arrayToXml(biomes,extrasJson.getJSONArray("biomes"),doc,"biome");
+        Element biomes = doc.createElement(Constant.biomes);
+        arrayToXml(biomes,extrasJson.getJSONArray(Constant.biomes),doc,Constant.biome);
 
-        Element creeks = doc.createElement("creeks");
-        arrayToXml(creeks,extrasJson.getJSONArray("creeks"),doc,"creek");
+        Element creeks = doc.createElement(Constant.creeks);
+        arrayToXml(creeks,extrasJson.getJSONArray(Constant.creeks),doc,Constant.creek);
 
-        Element sites = doc.createElement("sites");
-        arrayToXml(sites,extrasJson.getJSONArray("sites"),doc,"site");
+        Element sites = doc.createElement(Constant.sites);
+        arrayToXml(sites,extrasJson.getJSONArray(Constant.sites),doc,Constant.site);
 
         extras.appendChild(biomes);
         extras.appendChild(creeks);
@@ -48,8 +49,8 @@ public class TagScan extends TagBuilder {
     }
 
     /*
-    {"cost": 2,
-     "extras": { "biomes": ["BEACH"], "creeks": [], "sites": ["id"]},
-     "status": "OK"}
+    {Constant.cost: 2,
+     Constant.extras: { Constant.biomes: ["BEACH"], Constant.creeks: [], Constant.sites: ["id"]},
+     Constant.status: "OK"}
      */
 }

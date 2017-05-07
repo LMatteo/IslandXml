@@ -4,28 +4,29 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import parser.Tag;
 
 public class TagEcho extends TagBuilderDirected {
     public TagEcho(JSONObject request, JSONObject answer) {
-        super(request, answer,"echo");
+        super(request, answer, Tag.ECHO.getName());
     }
 
     @Override
     public Element getAnswerXml(Document doc) {
         Element element = super.getAnswerXml(doc);
 
-        NodeList list = element.getElementsByTagName("data");
+        NodeList list = element.getElementsByTagName(Constant.data);
         Element data =(Element) list.item(0);
 
-        Element extras = (Element) data.getElementsByTagName("extras").item(0);
+        Element extras = (Element) data.getElementsByTagName(Constant.extras).item(0);
 
-        JSONObject extrasJson = answer.getJSONObject("data").getJSONObject("extras");
+        JSONObject extrasJson = answer.getJSONObject(Constant.data).getJSONObject(Constant.extras);
 
-        Element range = doc.createElement("range");
-        range.appendChild(doc.createTextNode(String.valueOf(extrasJson.getInt("range"))));
+        Element range = doc.createElement(Constant.range);
+        range.appendChild(doc.createTextNode(String.valueOf(extrasJson.getInt(Constant.range))));
 
-        Element found = doc.createElement("found");
-        found.appendChild(doc.createTextNode(extrasJson.getString("found")));
+        Element found = doc.createElement(Constant.found);
+        found.appendChild(doc.createTextNode(extrasJson.getString(Constant.found)));
 
         extras.appendChild(found);
         extras.appendChild(range);

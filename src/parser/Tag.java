@@ -3,96 +3,64 @@ package parser;
 import org.json.JSONObject;
 import parser.tagBuilder.*;
 
-public enum Element {
-    FLY {
-        @Override
-        public String getName() {
-            return "fly";
-        }
-
+public enum Tag {
+    FLY("fly") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagFly(action,answer);
         }
     },
-    STOP {
-        @Override
-        public String getName() {
-            return "stop";
-        }
-
+    STOP("stop") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagStop(action,answer);
         }
     },
-    HEADING {
-        @Override
-        public String getName() {
-            return "heading";
-        }
-
+    HEADING("heading") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagHeading(action,answer);
         }
     },
-    MOVETO {
-        @Override
-        public String getName() {
-            return "move_to";
-        }
-
+    MOVETO("move_to") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagMoveTo(action,answer);
         }
     },
-    ECHO {
-        @Override
-        public String getName() {
-            return "echo";
-        }
-
+    ECHO("echo") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagEcho(action,answer);
         }
     },
-    SCAN {
-        @Override
-        public String getName() {
-            return "scan";
-        }
-
+    SCAN("scan") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagScan(action,answer);
         }
     },
-    LAND {
-        @Override
-        public String getName() {
-            return "land";
-        }
-
+    LAND("land") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagLand(action,answer);
         }
     },
-    SCOUT {
-        @Override
-        public String getName() {
-            return "scout";
-        }
-
+    SCOUT("scout") {
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagScout(action,answer);
         }
     };
 
-    public abstract String getName();
+    private String name;
+
+    Tag(String name) {
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
     public abstract TagBuilder getBuilder(JSONObject action, JSONObject answer);
 }

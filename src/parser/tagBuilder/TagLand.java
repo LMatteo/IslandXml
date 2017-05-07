@@ -4,29 +4,30 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import parser.Tag;
 
 public class TagLand extends TagBuilder {
     public TagLand(JSONObject request, JSONObject answer) {
-        super(request, answer, "land");
+        super(request, answer, Tag.LAND.getName());
     }
 
     @Override
     public Element getActionXml(Document doc){
         Element element = super.getActionXml(doc);
 
-        JSONObject param = request.getJSONObject("data").getJSONObject("parameters");
+        JSONObject param = request.getJSONObject(Constant.data).getJSONObject(Constant.parameters);
 
-        NodeList list = element.getElementsByTagName("data");
+        NodeList list = element.getElementsByTagName(Constant.data);
         Element data =(Element) list.item(0);
 
-        Element parameters = doc.createElement("parameters");
+        Element parameters = doc.createElement(Constant.parameters);
 
-        Element creek = doc.createElement("creek");
-        creek.appendChild(doc.createTextNode(param.getString("creek")));
+        Element creek = doc.createElement(Constant.creek);
+        creek.appendChild(doc.createTextNode(param.getString(Constant.creek)));
         parameters.appendChild(creek);
 
-        Element people = doc.createElement("people");
-        people.appendChild(doc.createTextNode(String.valueOf(param.getInt("people"))));
+        Element people = doc.createElement(Constant.people);
+        people.appendChild(doc.createTextNode(String.valueOf(param.getInt(Constant.people))));
         parameters.appendChild(people);
 
         data.appendChild(parameters);

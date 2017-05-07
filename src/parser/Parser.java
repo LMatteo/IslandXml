@@ -1,5 +1,6 @@
 package parser;
 import org.json.*;
+import parser.tagBuilder.Constant;
 import parser.tagBuilder.TagBuilder;
 
 import org.w3c.dom.*;
@@ -27,7 +28,7 @@ public class Parser {
 
         document = docBuilder.newDocument();
 
-        org.w3c.dom.Element rootElement = document.createElement("Championship");
+        org.w3c.dom.Element rootElement = document.createElement(Constant.championship);
         document.appendChild(rootElement);
 
 
@@ -62,10 +63,10 @@ public class Parser {
 
     private static void createDoc(JSONArray arr, int i, org.w3c.dom.Element element, Document doc){
         //à changer
-        String currentAction = arr.getJSONObject(i).getJSONObject("data").getString("action");
+        String currentAction = arr.getJSONObject(i).getJSONObject(Constant.data).getString(Constant.action);
 
         //on cherche quelle action correspond au Json donné
-        for(Element elem : Element.values()){
+        for(Tag elem : Tag.values()){
             //TODO : rempli l'enum et implémenter les classes TagBuilder
             if(elem.getName().equals(currentAction)){
 

@@ -5,37 +5,38 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import parser.Tag;
 
 public class TagScout extends TagBuilderDirected {
     public TagScout(JSONObject request, JSONObject answer) {
-        super(request, answer, "scout");
+        super(request, answer, Tag.SCOUT.getName());
     }
 
     @Override
     public Element getAnswerXml(Document doc) {
         Element element =  super.getAnswerXml(doc);
 
-        NodeList list = element.getElementsByTagName("data");
+        NodeList list = element.getElementsByTagName(Constant.data);
         Element data =(Element) list.item(0);
 
-        Element extras = (Element) data.getElementsByTagName("extras").item(0);
+        Element extras = (Element) data.getElementsByTagName(Constant.extras).item(0);
 
-        JSONObject extrasJson = answer.getJSONObject("data").getJSONObject("extras");
+        JSONObject extrasJson = answer.getJSONObject(Constant.data).getJSONObject(Constant.extras);
 
-        Element altitutde = doc.createElement("altitude");
-        altitutde.appendChild(doc.createTextNode(String.valueOf(extrasJson.getInt("altitude"))));
+        Element altitutde = doc.createElement(Constant.altitude);
+        altitutde.appendChild(doc.createTextNode(String.valueOf(extrasJson.getInt(Constant.altitude))));
         extras.appendChild(altitutde);
 
-        buildResArray(doc,extras,extrasJson.getJSONArray("resources"));
+        buildResArray(doc,extras,extrasJson.getJSONArray(Constant.resources));
 
         return element;
     }
 
     private void buildResArray(Document doc, Element extras, JSONArray array){
-        Element resources = doc.createElement("resources");
+        Element resources = doc.createElement(Constant.resources);
 
         for(int i = 0;i<array.length();i++){
-            Element resource = doc.createElement("resource");
+            Element resource = doc.createElement(Constant.resource);
             resource.appendChild(doc.createTextNode(array.getString(i)));
             resources.appendChild(resource);
         }
@@ -44,7 +45,7 @@ public class TagScout extends TagBuilderDirected {
     }
 
     /*
-    { "cost": 5, "extras": { "altitude": 1, "resources": ["FUR", "WOOD"] }, "status": "OK" }
+    { Constant.cost: 5, Constant.extras: { Constant.altitude: 1, Constant.resources: ["FUR", "WOOD"] }, Constant.status: "OK" }
      */
     /*
     <element>
