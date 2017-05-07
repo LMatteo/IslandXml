@@ -17,13 +17,17 @@ public abstract class TagBuilderDirected extends TagBuilder{
         NodeList list = element.getElementsByTagName("data");
         Element data =(Element) list.item(0);
 
+        Element parameters = doc.createElement("parameters");
+
 
         Element direction = doc.createElement("direction");
         direction.appendChild(doc.createTextNode(request.getJSONObject("data").
                 getJSONObject("parameters").
                 getString("direction")));
 
-        data.appendChild(direction);
+        parameters.appendChild(direction);
+
+        data.appendChild(parameters);
 
 
         return element;
