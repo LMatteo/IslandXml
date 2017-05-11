@@ -26,4 +26,5 @@ public class Constant {
     public final static String resource = "resource";
     public final static String resources = "resources";
     public final static String altitude = "altitude";
+    public final static String amount = "amount";
 }

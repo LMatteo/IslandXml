@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import parser.Tag;
 
-public class TagScan extends TagBuilder {
+public class  TagScan extends TagBuilder {
     public TagScan(JSONObject request, JSONObject answer) {
         super(request, answer, Tag.SCAN.getName());
     }

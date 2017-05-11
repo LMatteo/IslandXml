@@ -57,7 +57,12 @@ public enum Tag {
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagGlimpse(action,answer);
         }
-    };
+    },
+    EXPLOIT("exploit"){
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer) { return new TagExploit(action,answer);}
+    }
+    ;
 
     private String name;
 
