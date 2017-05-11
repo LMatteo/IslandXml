@@ -48,7 +48,7 @@ public class TagScout extends TagBuilderDirected {
     { Constant.cost: 5, Constant.extras: { Constant.altitude: 1, Constant.resources: ["FUR", "WOOD"] }, Constant.status: "OK" }
      */
     /*
-    <element>
+    <request>
 		<data>
 			<cost>2</cost>
 			<extras>
@@ -62,6 +62,6 @@ public class TagScout extends TagBuilderDirected {
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-	</element>
+	</request>
      */
 }

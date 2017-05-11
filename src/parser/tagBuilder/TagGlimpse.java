@@ -1,5 +1,6 @@
 package parser.tagBuilder;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,11 +31,10 @@ public class TagGlimpse extends TagBuilderDirected {
         return  element;
     }
     /*
-    <element>
+    <request>
 		<data>
 			<cost>3</cost>
 			<extras>
-				<asked_range>4</asked_range>
 				<report>
 					<tile>
 						<resource>BEACH</resource>
@@ -49,18 +49,87 @@ public class TagGlimpse extends TagBuilderDirected {
 		</data>
 		<part>Engine</part>
 		<time>16815132</time>
-	</element>
+	</request>
      */
 
     @Override
     public Element getAnswerXml(Document doc) {
-        Element element = super.getActionXml(doc);
+        Element element = super.getAnswerXml(doc);
 
         NodeList list = element.getElementsByTagName(Constant.data);
         Element data =(Element) list.item(0);
 
+        Element extras = (Element) data.getElementsByTagName(Constant.extras).item(0);
 
+        Element report = doc.createElement(Constant.report);
+
+        JSONArray arr = answer.getJSONObject(Constant.data)
+                .getJSONObject(Constant.extras)
+                .getJSONArray(Constant.report);
+
+        buildTile(arr,report,doc);
+
+        extras.appendChild(report);
 
         return element;
+    }
+    /*
+    {
+  "data": {
+    "cost": 6,
+    "extras": {
+      "asked_range": 4,
+      "report": [
+        [[
+          "SHRUBLAND",
+          100
+        ]],
+        [[
+          "SHRUBLAND",
+          100
+        ]],
+        ["SHRUBLAND"],
+        ["SHRUBLAND"]
+      ]
+    },
+    "status": "OK"
+  },
+  "part": "Engine",
+  "time": 1490548600302,
+  "meth": "takeDecision"
+}
+     */
+
+    private void buildTile(JSONArray array,Element extras,Document doc){
+
+        for(int i = 0;i<array.length();i++){
+            String tileString = "";
+            String percString = "";
+
+
+            try{
+                tileString = array.getJSONArray(i).getJSONArray(0).getString(0);
+                percString = String.valueOf(array.getJSONArray(i).getJSONArray(0).getInt(1));
+            } catch (Exception e){
+                tileString = array.getJSONArray(i).getString(0);
+            }
+
+            Element tile = doc.createElement(Constant.tile);
+
+            Element resource = doc.createElement(Constant.resource);
+            resource.appendChild(doc.createTextNode(tileString));
+            tile.appendChild(resource);
+
+            if(percString != ""){
+                Element percentage = doc.createElement(Constant.percentage);
+                percentage.appendChild(doc.createTextNode(percString));
+                tile.appendChild(percentage);
+            }
+
+            extras.appendChild(tile);
+        }
+
+
+
     }
 }

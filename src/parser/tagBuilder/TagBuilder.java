@@ -18,7 +18,7 @@ public abstract class TagBuilder {
     }
 
     public Element getActionXml(Document doc){
-        Element element = doc.createElement(Constant.element);
+        Element element = doc.createElement(Constant.request);
         Element data = doc.createElement(Constant.data);
         Element action = doc.createElement(Constant.action);
         action.appendChild(doc.createTextNode(name));
@@ -39,7 +39,7 @@ public abstract class TagBuilder {
         return element;
     }
     public Element getAnswerXml(Document doc) {
-        Element element = doc.createElement(Constant.element);
+        Element element = doc.createElement(Constant.answer);
 
         Element data = doc.createElement(Constant.data);
 
