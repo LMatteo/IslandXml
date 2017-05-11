@@ -35,7 +35,7 @@ public class TagLand extends TagBuilder {
         return element;
     }
     /*
-    <element>
+    <request>
 		<data>
 			<action>land</action>
 			<parameters>
@@ -46,7 +46,7 @@ public class TagLand extends TagBuilder {
 		<part>Engine</part>
 		<time>16815132</time>
 		<meth>takeDecision</meth>
-	</element>
+	</request>
 
      */
 }

@@ -4,7 +4,8 @@ public class Constant {
     public final static String data ="data";
     public final static String championship ="championship";
     public final static String action ="action";
-    public final static String element = "element";
+    public final static String request = "request";
+    public final static String answer = "answer";
     public final static String cost = "cost";
     public final static String status = "status";
     public final static String extras = "extras";
@@ -27,5 +28,8 @@ public class Constant {
     public final static String resources = "resources";
     public final static String altitude = "altitude";
     public final static String step = "step";
+    public final static String report = "report";
+    public final static String tile = "tile";
+    public final static String percentage = "percentage";
 
 }

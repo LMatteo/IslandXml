@@ -5,7 +5,7 @@
 		<!ELEMENT initialization (data,part,time,meth)>
 		<!ELEMENT element ((data,part,time)|)>
 		<!ELEMENT data (cost,extras,status)>
-		<!ELEMENT extras ((action|(heading,men,contracts,budget)|(action,parameters)|(range,found)|(biomes,creeks,sites)|(altitude,resources)|(asked_range,report)|(exlorations,pois)|(production,kind))?)>
+		<!ELEMENT extras ((action|(heading,men,contracts,budget)|(action,parameters)|(range,found)|(biomes,creeks,sites)|(altitude,resources)|(report)|(exlorations,pois)|(production,kind))?)>
 		<!ELEMENT action (#PCDATA)>
 		<!ELEMENT part (Engine|Explorer)>
 		<!ELEMENT time (#PCDATA)>
