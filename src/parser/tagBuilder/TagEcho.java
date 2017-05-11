@@ -7,8 +7,8 @@ import org.w3c.dom.NodeList;
 import parser.Tag;
 
 public class TagEcho extends TagBuilderDirected {
-    public TagEcho(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.ECHO.getName());
+    public TagEcho(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.ECHO.getName(),id);
     }
 
     @Override

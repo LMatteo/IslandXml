@@ -8,8 +8,8 @@ import org.w3c.dom.NodeList;
 import parser.Tag;
 
 public class TagScout extends TagBuilderDirected {
-    public TagScout(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.SCOUT.getName());
+    public TagScout(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.SCOUT.getName(),id);
     }
 
     @Override

@@ -70,7 +70,7 @@ public class Parser {
             //TODO : rempli l'enum et implémenter les classes TagBuilder
             if(elem.getName().equals(currentAction)){
 
-                TagBuilder builder = elem.getBuilder(arr.getJSONObject(i),arr.getJSONObject(i+1));
+                TagBuilder builder = elem.getBuilder(arr.getJSONObject(i),arr.getJSONObject(i+1),i);
                 element.appendChild(builder.getActionXml(doc));
                 element.appendChild(builder.getAnswerXml(doc));
             }

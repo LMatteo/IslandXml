@@ -3,9 +3,7 @@
 <!DOCTYPE championship [
 	<!ELEMENT championship (initialization,(element)*)>
 		<!ELEMENT initialization (data,part,time,meth)>
-		<!ELEMENT element ((data,part,time,meth))>
-		<!ATTLIST element step CDATA #REQUIRED>
-		<!ATTLIST element part CDATA #REQUIRED	>
+		<!ELEMENT element ((data,part,time)|)>
 		<!ELEMENT data (cost,extras,status)>
 		<!ELEMENT extras ((action|(heading,men,contracts,budget)|(action,parameters)|(range,found)|(biomes,creeks,sites)|(altitude,resources)|(asked_range,report)|(exlorations,pois)|(production,kind))?)>
 		<!ELEMENT action (#PCDATA)>

@@ -7,8 +7,8 @@ import org.w3c.dom.NodeList;
 import parser.Tag;
 
 public class TagGlimpse extends TagBuilderDirected {
-    public TagGlimpse(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.GLIMPSE.getName());
+    public TagGlimpse(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.GLIMPSE.getName(),id);
     }
 
     @Override
@@ -28,8 +28,6 @@ public class TagGlimpse extends TagBuilderDirected {
         parameters.appendChild(range);
 
         return  element;
-
-
     }
     /*
     <element>
@@ -56,6 +54,13 @@ public class TagGlimpse extends TagBuilderDirected {
 
     @Override
     public Element getAnswerXml(Document doc) {
-        return super.getAnswerXml(doc);
+        Element element = super.getActionXml(doc);
+
+        NodeList list = element.getElementsByTagName(Constant.data);
+        Element data =(Element) list.item(0);
+
+
+
+        return element;
     }
 }
