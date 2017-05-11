@@ -6,56 +6,56 @@ import parser.tagBuilder.*;
 public enum Tag {
     FLY("fly") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagFly(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagFly(action,answer,id);
         }
     },
     STOP("stop") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagStop(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagStop(action,answer,id);
         }
     },
     HEADING("heading") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagHeading(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagHeading(action,answer,id);
         }
     },
     MOVETO("move_to") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagMoveTo(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagMoveTo(action,answer,id);
         }
     },
     ECHO("echo") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagEcho(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagEcho(action,answer,id);
         }
     },
     SCAN("scan") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagScan(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagScan(action,answer,id);
         }
     },
     LAND("land") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagLand(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagLand(action,answer,id);
         }
     },
     SCOUT("scout") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagScout(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagScout(action,answer,id);
         }
     },
     GLIMPSE("glimpse") {
         @Override
-        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
-            return new TagGlimpse(action,answer);
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) {
+            return new TagGlimpse(action,answer,id);
         }
     };
 
@@ -68,5 +68,5 @@ public enum Tag {
     public String getName(){
         return name;
     }
-    public abstract TagBuilder getBuilder(JSONObject action, JSONObject answer);
+    public abstract TagBuilder getBuilder(JSONObject action, JSONObject answer, int id);
 }

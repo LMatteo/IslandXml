@@ -6,8 +6,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public abstract class TagBuilderDirected extends TagBuilder{
-    public TagBuilderDirected(JSONObject request, JSONObject answer, String name) {
-        super(request, answer, name);
+    public TagBuilderDirected(JSONObject request, JSONObject answer, String name,int id) {
+        super(request, answer, name,id);
     }
 
     @Override

@@ -8,8 +8,8 @@ import org.w3c.dom.NodeList;
 import parser.Tag;
 
 public class TagScan extends TagBuilder {
-    public TagScan(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.SCAN.getName());
+    public TagScan(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.SCAN.getName(),id);
     }
 
     @Override

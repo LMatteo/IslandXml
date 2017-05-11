@@ -7,12 +7,14 @@ import org.w3c.dom.Element;
 public abstract class TagBuilder {
     protected JSONObject request;
     protected JSONObject answer;
-    protected String name;
+    private String name;
+    protected int id;
 
-    public TagBuilder(JSONObject request, JSONObject answer, String name) {
+    public TagBuilder(JSONObject request, JSONObject answer, String name, int id) {
         this.request = request;
         this.answer = answer;
         this.name = name;
+        this.id = (id-1)/2;
     }
 
     public Element getActionXml(Document doc){
@@ -30,6 +32,9 @@ public abstract class TagBuilder {
         Element time = doc.createElement(Constant.time);
         time.appendChild(doc.createTextNode(String.valueOf(request.getLong(Constant.time))));
         element.appendChild(time);
+
+        element.setAttribute(Constant.part,Constant.explorer);
+        element.setAttribute(Constant.step,String.valueOf(id));
 
         return element;
     }
@@ -60,6 +65,9 @@ public abstract class TagBuilder {
         Element time = doc.createElement(Constant.time);
         time.appendChild(doc.createTextNode(String.valueOf(answer.getLong(Constant.time))));
         element.appendChild(time);
+
+        element.setAttribute(Constant.part,Constant.engine);
+        element.setAttribute(Constant.step,String.valueOf(id));
 
         return element;
 

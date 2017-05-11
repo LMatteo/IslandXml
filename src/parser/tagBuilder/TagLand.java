@@ -7,8 +7,8 @@ import org.w3c.dom.NodeList;
 import parser.Tag;
 
 public class TagLand extends TagBuilder {
-    public TagLand(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.LAND.getName());
+    public TagLand(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.LAND.getName(),id);
     }
 
     @Override

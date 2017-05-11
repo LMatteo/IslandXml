@@ -7,8 +7,8 @@ import parser.Tag;
 
 public class TagFly extends TagBuilder {
 
-    public TagFly(JSONObject request, JSONObject answer) {
-        super(request, answer, Tag.FLY.getName());
+    public TagFly(JSONObject request, JSONObject answer,int id) {
+        super(request, answer, Tag.FLY.getName(),id);
     }
 
 }

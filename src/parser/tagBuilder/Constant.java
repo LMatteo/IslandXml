@@ -9,9 +9,9 @@ public class Constant {
     public final static String status = "status";
     public final static String extras = "extras";
     public final static String part = "part";
-    public final static String engine = "engine";
+    public final static String engine = "Engine";
     public final static String time = "time";
-    public final static String explorer = "explorer";
+    public final static String explorer = "Explorer";
     public final static String parameters = "parameters";
     public final static String creek = "creek";
     public final static String creeks = "creeks";
@@ -26,4 +26,6 @@ public class Constant {
     public final static String resource = "resource";
     public final static String resources = "resources";
     public final static String altitude = "altitude";
+    public final static String step = "step";
+
 }
