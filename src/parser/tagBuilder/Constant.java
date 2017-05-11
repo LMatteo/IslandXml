@@ -32,4 +32,5 @@ public class Constant {
     public final static String tile = "tile";
     public final static String percentage = "percentage";
 
+    public final static String amount = "amount";
 }

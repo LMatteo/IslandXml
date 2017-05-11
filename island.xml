@@ -26,15 +26,14 @@
 
 	<!--  REQUEST -->
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<action>fly</action>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<action>heading</action>
 			<parameters>
@@ -42,12 +41,10 @@
 				<range>2</range>
 			</parameters>
 		</data>
-		<part>Explorer</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
-	<element>
+	<element step="13" part="Engine">
 		<data>
 			<action>land</action>
 			<parameters>
@@ -55,12 +52,10 @@
 				<people>42</people>
 			</parameters>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
-	<element>
+	<element step="14" part="Engine">
 		<data>
 			<action>transform</action>
 			<parameters>
@@ -74,15 +69,13 @@
 				</unit>
 			</parameters>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
-		<meth>takeDecision</meth>
 	</element>
 
 
 	<!--  ANSWERS -->
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>2</cost>
 			<extras>
@@ -91,11 +84,10 @@
 			</extras>
 			<status>OK</status>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>2</cost>
 			<extras>
@@ -112,11 +104,10 @@
 			</extras>
 			<status>OK</status>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>2</cost>
 			<extras>
@@ -128,11 +119,10 @@
 			</extras>
 			<status>OK</status>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>3</cost>
 			<extras>
@@ -149,11 +139,10 @@
 			</extras>
 			<status>OK</status>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>5</cost>
 			<extras>
@@ -175,11 +164,10 @@
 			</extras>
 			<status>OK</status>
 		</data>
-		<part>Engine</part>
 		<time>16815132</time>
 	</element>
 
-	<element>
+	<element step="12" part="Engine">
 		<data>
 			<cost>5</cost>
 			<extras>
@@ -189,7 +177,6 @@
 			<status>OK</status>
 		</data>
 		<part>Engine</part>
-		<time>16815132</time>
 	</element>
 
 </championship>
