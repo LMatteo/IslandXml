@@ -51,6 +51,12 @@ public enum Tag {
         public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
             return new TagScout(action,answer);
         }
+    },
+    GLIMPSE("glimpse") {
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer) {
+            return new TagGlimpse(action,answer);
+        }
     };
 
     private String name;
