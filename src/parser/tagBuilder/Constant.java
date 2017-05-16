@@ -33,11 +33,9 @@ public class Constant {
     public final static String percentage = "percentage";
     public final static String exploration = "exploration";
     public final static String cond = "cond";
-    public final static String kind = "kind";
     public final static String zone = "zone";
     public final static String id = "id";
     public final static String pois = "pois";
-
     public final static String amount = "amount";
     public final static String unit = "unit";
     public final static String quantity="quantity";
