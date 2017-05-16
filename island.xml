@@ -147,13 +147,11 @@
 			<cost>5</cost>
 			<extras>
 				<resources>
-					<explorations>
 						<exploration>
 							<amount>HIGH</amount>
 							<resource>FUR</resource>
 							<cond>FAIR</cond>
 						</exploration>
-					</explorations>
 				</resources>
 				<pois>
 					<zone>

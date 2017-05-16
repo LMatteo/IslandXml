@@ -25,10 +25,6 @@ public abstract class TagBuilder {
         data.appendChild(action);
         element.appendChild(data);
 
-        Element part = doc.createElement(Constant.part);
-        part.appendChild(doc.createTextNode(Constant.explorer));
-        element.appendChild(part);
-
         Element time = doc.createElement(Constant.time);
         time.appendChild(doc.createTextNode(String.valueOf(request.getLong(Constant.time))));
         element.appendChild(time);
