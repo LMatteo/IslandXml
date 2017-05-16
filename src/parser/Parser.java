@@ -87,7 +87,7 @@ public class Parser {
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
         transformer.transform(new DOMSource(doc),
-                new StreamResult(new OutputStreamWriter(new FileOutputStream("./xml.xml"), "UTF-8")));
+                new StreamResult(new OutputStreamWriter(new FileOutputStream("./fermeLaJosué.xml"), "UTF-8")));
 
     }
 }
