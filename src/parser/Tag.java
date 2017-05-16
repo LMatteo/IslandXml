@@ -61,6 +61,10 @@ public enum Tag {
     EXPLOIT("exploit"){
         @Override
         public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) { return new TagExploit(action,answer, id);}
+    },
+    TRANSFORM("transform"){
+        @Override
+        public TagBuilder getBuilder(JSONObject action, JSONObject answer, int id) { return new TagTransform(action,answer, id);}
     }
     ;
 

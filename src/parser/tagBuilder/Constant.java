@@ -13,7 +13,7 @@ public class Constant {
     public final static String engine = "Engine";
     public final static String time = "time";
     public final static String explorer = "Explorer";
-    public final static String parameters = "parameters";
+    public static final String parameters = "parameters";
     public final static String creek = "creek";
     public final static String creeks = "creeks";
     public final static String site = "site";
@@ -31,6 +31,9 @@ public class Constant {
     public final static String report = "report";
     public final static String tile = "tile";
     public final static String percentage = "percentage";
-
     public final static String amount = "amount";
+    public final static String unit = "unit";
+    public final static String quantity="quantity";
+    public final static String production = "production";
+    public final static String kind="kind";
 }
