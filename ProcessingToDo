@@ -1,0 +1,25 @@
+4 parts :
+
+1. Initial context :
+- Number of men
+- Resources needed
+- Budget
+
+2. Aerial exploration
+- Cost of aerial exploration
+- Length traveled
+- Average cost of an action
+
+3. Terrestrial exploration
+- Cost of exploration
+- Length traveled
+- Average cost of an action
+
+4. Results
+- Remaining budget
+- Collected resources
+- (including transformed resources)
+- Cost of each action (in % of consumed budget)
+- Ranking of most used actions
+- Rating of performance (maybe)
+
