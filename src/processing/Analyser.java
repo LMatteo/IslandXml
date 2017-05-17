@@ -27,15 +27,17 @@ public enum Analyser {
                 Element contract = (Element) contracts.item(i);
                 String res = contract.getElementsByTagName(Constant.resource).item(0).getTextContent();
                 String qte = contract.getElementsByTagName(Constant.amount).item(0).getTextContent();
-                result.write(res + "("+qte+")");
+                result.write(res + " ("+qte+") ");
             }
+            result.writeln("");
 
         }
     },
     INITIAL_BUDGET{
         @Override
         public void execute(Document doc, Results result){
-            result.writeln("Initial budget");
+            Node init = doc.getElementsByTagName(Constant.budget).item(0);
+            result.writeln("Initial budget : "+init.getTextContent());
         }
     },
     COST_OF_AERIAL{
