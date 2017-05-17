@@ -36,6 +36,10 @@ public class TagInitialization {
         time.appendChild(doc.createTextNode(String.valueOf(init.getLong(Constant.time))));
         initialization.appendChild(time);
 
+        Element budget = doc.createElement(Constant.budget);
+        budget.appendChild(doc.createTextNode(String.valueOf(dataJson.getInt(Constant.budget))));
+        data.appendChild(budget);
+
         initialization.appendChild(data);
         return initialization;
     }

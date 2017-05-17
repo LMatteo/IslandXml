@@ -46,4 +46,5 @@ public class Constant {
     public final static String men="men";
     public final static String contracts="contracts";
     public final static String contract="contract";
+    public final static String budget="budget";
 }
