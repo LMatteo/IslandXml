@@ -19,6 +19,10 @@ public class ResultsToTxt implements Results{
     }
 
     public void write(String s){
+        writer.print(s);
+    }
+
+    public void writeln(String s){
         writer.println(s);
     }
 

@@ -5,5 +5,6 @@ package processing.results;
  */
 public interface Results {
     public void write(String s);
+    public void writeln(String s);
     public void close();
 }
