@@ -41,4 +41,9 @@ public class Constant {
     public final static String quantity="quantity";
     public final static String production = "production";
     public final static String kind="kind";
+    public final static String initialization="initialization";
+    public final static String heading="heading";
+    public final static String men="men";
+    public final static String contracts="contracts";
+    public final static String contract="contract";
 }

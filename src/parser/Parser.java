@@ -4,6 +4,7 @@ import parser.tagBuilder.Constant;
 import parser.tagBuilder.TagBuilder;
 
 import org.w3c.dom.*;
+import parser.tagBuilder.TagInitialization;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -37,13 +38,15 @@ public class Parser {
 
         //TODO : gérer l'ecriture de l'initialisation
 
+        TagInitialization init = new TagInitialization(json.getJSONObject(0));
+        rootElement.appendChild(init.getInitXml(document));
         //on parcourt le tableau 2 à 2
         //l'action et la réponse sont traitées ensemble pour plus de facilité
         for(int i = 1;i<json.length();i += 2){
             createDoc(json,i,rootElement,document);
         }
 
-        printXml(document);
+        printXml(document,fileName);
 
 
     }
@@ -67,8 +70,7 @@ public class Parser {
 
         //on cherche quelle action correspond au Json donné
         for(Tag elem : Tag.values()){
-            //TODO : rempli l'enum et implémenter les classes TagBuilder
-            if(elem.getName().equals(currentAction)){
+                if(elem.getName().equals(currentAction)){
 
                 TagBuilder builder = elem.getBuilder(arr.getJSONObject(i),arr.getJSONObject(i+1),i);
                 element.appendChild(builder.getActionXml(doc));
@@ -77,7 +79,7 @@ public class Parser {
         }
     }
 
-    private static void printXml(Document doc) throws IOException,TransformerException{
+    private static void printXml(Document doc,String name) throws IOException,TransformerException{
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
@@ -86,8 +88,11 @@ public class Parser {
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
+        try{name = name.split("\\.")[0];}
+        catch (Exception e){}
+
         transformer.transform(new DOMSource(doc),
-                new StreamResult(new OutputStreamWriter(new FileOutputStream("./GeneratedXml.xml"), "UTF-8")));
+                new StreamResult(new OutputStreamWriter(new FileOutputStream("./"+name+".xml"), "UTF-8")));
 
     }
 }
