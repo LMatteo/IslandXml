@@ -56,6 +56,7 @@ public class TagInitialization {
 
             Element resource = doc.createElement(Constant.resource);
             resource.appendChild(doc.createTextNode(current.getString(Constant.resource)));
+            contract.appendChild(resource);
 
             contracts.appendChild(contract);
         }
