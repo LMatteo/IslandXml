@@ -1,7 +1,6 @@
 package processing;
 
 import org.w3c.dom.Document;
-import processing.results.ResultsToTxt;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,13 +19,15 @@ public class DataProcessing {
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document document = db.parse(file);
 
-        ResultsToTxt results = new ResultsToTxt();
+
+
+        DataMeter meter = new DataMeter();
 
         for(Analyser a : Analyser.values()){
-            a.execute(document,results);
+            a.execute(document,meter);
         }
-        
-        results.close();
+
+        meter.print();
 
     }
 }
