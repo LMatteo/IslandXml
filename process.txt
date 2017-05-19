@@ -2,21 +2,21 @@ Number of men : 2
 Needed resources : GLASS (50) FUR (1000) WOOD (10000) PLANK (35000) LEATHER (200) RUM (30) FLOWER (30) 
 Collected resource : FRUITS (6) FUR (3) WOOD (280) SUGAR_CANE (8) LEATHER (191) RUM (31) FLOWER (30) QUARTZ (465) 
 Initial budget : 30000
+Remaining budget : 364
 Length traveled : 4675 tiles
 Aerial length traveled : 2601 tiles
-Part of aerial cost : 23.96%
 Terrestrial length traveled : 2074 tiles
+Part of aerial cost : 23.96%
 Part of terrestrial cost : 74.7%
-Remaining budget : 364
-Actions use (total of 5527) : 
-    stop : 1 times (0.02%)
-    land : 1 times (0.02%)
-    transform : 2 times (0.04%)
-    heading : 49 times (0.89%)
-    echo : 121 times (2.19%)
-    exploit : 363 times (6.57%)
-    explore : 494 times (8.94%)
-    scan : 647 times (11.71%)
-    fly : 769 times (13.91%)
-    scout : 1006 times (18.2%)
-    move_to : 2074 times (37.52%)
+Cost per action : 
+    land : 11 - (0.04%)
+    stop : 27 - (0.09%)
+    heading : 238 - (0.8%)
+    transform : 375 - (1.27%)
+    echo : 624 - (2.11%)
+    fly : 3106 - (10.48%)
+    scan : 3220 - (10.87%)
+    explore : 3241 - (10.94%)
+    exploit : 4320 - (14.58%)
+    scout : 5687 - (19.19%)
+    move_to : 8787 - (29.65%)

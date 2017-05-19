@@ -1,6 +1,6 @@
 package processing;
 
-import processing.results.ResultsToTxt;
+import processing.results.ResultsToHtml;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -19,7 +19,7 @@ public class DataMeter {
     private int lengthTraveledTerrestrial;
     private int aerialCost;
     private int terrestrialCost;
-    private Map<String, Integer> nbActionCalled;
+    private Map<String, Integer> ActionsCost;
     //TODO
     private String creek;
 
@@ -31,64 +31,96 @@ public class DataMeter {
         currentBudget = 0;
         lengthTraveledAerial= 0;
         lengthTraveledTerrestrial= 0;
-        nbActionCalled = new HashMap<>();
+        ActionsCost = new HashMap<>();
         aerialCost = 0;
         terrestrialCost = 0;
     }
 
 
     public void print() {
-        ResultsToTxt results = new ResultsToTxt();
+        ResultsToHtml results = new ResultsToHtml();
+        //
+        results.writeElementStart();
+        results.writeTitle("Initialisation");
         //
         results.writeln("Number of men : " + men);
         //
-        results.write("Needed resources : ");
+
+
+        /**
+         * Budget
+         */
+        results.writeElementStart();
+        results.writeTitle("Budget");
+        results.writeln("Initial budget : " + initialBudget);
+        //
+        results.writeln("Remaining budget : " + currentBudget);
+        results.writeElementEnd();
+        //
+
+
+        /**
+         * Travel
+         */
+        results.writeElementStart();
+        results.writeTitle("Travel");
+        //
+        results.writeln("Length traveled : " + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles");
+        //
+        results.writeln("Aerial length traveled : " + lengthTraveledAerial + " tiles");
+        //
+        results.writeln("Terrestrial length traveled : " + lengthTraveledTerrestrial + " tiles");
+        results.writeElementEnd();
+        //
+
+
+        /**
+         * Resources
+         */
+        results.writeElementStart();
+        results.writeTitle("Resources");
+        //
+        results.writeln("Needed resources : ");
         for (Map.Entry<String, Integer> entry : neededResources.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
             results.write(key + " (" + value + ") ");
         }
-        results.writeln("");
-        //
         results.write("Collected resource : ");
         for (Map.Entry<String, Integer> entry : collectedResources.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
             results.write(key + " (" + value + ") ");
         }
-        results.writeln("");
-        //
-        results.writeln("Initial budget : " + initialBudget);
-        //
-        results.writeln("Length traveled : " + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles");
-        //
-        results.writeln("Aerial length traveled : " + lengthTraveledAerial + " tiles");
-        //
+        results.writeElementEnd();
+
+
+        /**
+         * Costs
+         */
+        results.writeElementStart();
+        results.writeTitle("Costs");
         int init = Integer.parseInt(initialBudget);
         float aerialpart = round((float)aerialCost/init*100,2);
         results.writeln("Part of aerial cost : "+aerialpart+"%");
         //
-        results.writeln("Terrestrial length traveled : " + lengthTraveledTerrestrial + " tiles");
-        //
         float terrpart = round((float)terrestrialCost/init*100,2);
         results.writeln("Part of terrestrial cost : "+terrpart+"%");
         //
-        results.writeln("Remaining budget : " + currentBudget);
-
-        //
         int total = 0;
-        nbActionCalled = sortByValue(nbActionCalled);
-        for (Map.Entry<String, Integer> entry : nbActionCalled.entrySet()) {
+        ActionsCost = sortByValue(ActionsCost);
+        for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
             total += entry.getValue();
         }
-        results.writeln("Actions use (total of "+total+") : ");
-        for (Map.Entry<String, Integer> entry : nbActionCalled.entrySet()) {
+        results.writeln("Cost per action : ");
+        for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
             float ratio = round((float)value/total*100,2);
-            results.writeln("    "+key + " : " + value + " times ("+ratio+"%)");
+            results.writeln("    "+key + " : " + value + " - ("+ratio+"%)");
         }
         //
+        results.writeElementEnd();
 
         results.close();
     }
@@ -108,15 +140,14 @@ public class DataMeter {
         collectedResources.put(res, newQty);
     }
 
-    public void actionPlus(String res) {
+    public void actionPlus(String res, int qte) {
         int q;
-        if (nbActionCalled.containsKey(res)) {
-            q = nbActionCalled.get(res);
-            q++;
+        if (ActionsCost.containsKey(res)) {
+            q = ActionsCost.get(res) + qte;
         } else {
-            q = 1;
+            q = qte;
         }
-        nbActionCalled.put(res, q);
+        ActionsCost.put(res, q);
     }
 
     public static float round(float d, int decimalPlace) {

@@ -166,17 +166,14 @@ public enum Analyser {
     COST_PER_ACTION {
         @Override
         public void execute(Document doc, DataMeter meter) {
-
-        }
-    },
-    RANKING_OF_ACTIONS {
-        @Override
-        public void execute(Document doc, DataMeter meter) {
             NodeList nodes = doc.getChildNodes().item(0).getChildNodes();
             for (int i = 3; i < nodes.getLength(); i += 4) {
                 Element request = (Element) nodes.item(i);
+                Element answer = (Element) nodes.item(i + 2);
                 String res = request.getElementsByTagName("action").item(0).getTextContent();
-                meter.actionPlus(res);
+                String qte = answer.getElementsByTagName("cost").item(0).getTextContent();
+                meter.actionPlus(res,Integer.parseInt(qte));
+
             }
         }
     };
