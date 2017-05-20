@@ -23,12 +23,29 @@ public class ResultsToHtml implements Results {
         writeln("<h2>"+s+"</h2>");
     }
 
-    public void writeElementStart(){
-        writeln("<div class='card'>");
+    public void writeElementStart(String id){
+        writer.println("<div class='card' id='"+id+"'>");
     }
-    public void writeElementEnd(){
-        writeln("</div>");
+
+    public void writeCssElement(String id){
+        writer.println("<div id='"+id+"'>");
     }
+    public void writeEnd(){
+        writer.println("</div>");
+    }
+
+    public void writeUl(){
+        writer.println("<ul>");
+    }
+
+    public void writeInLi(String st, String key){
+        writer.println("<li id='"+key+"'>"+st+"</li>");
+    }
+
+    public void writeUlEnd(){
+        writer.println("</ul>");
+    }
+
 
     @Override
     public void write(String s) {

@@ -40,72 +40,83 @@ public class DataMeter {
     public void print() {
         ResultsToHtml results = new ResultsToHtml();
         //
-        results.writeElementStart();
+        /*
+        results.writeElementStart("initialisation");
         results.writeTitle("Initialisation");
         //
         results.writeln("Number of men : " + men);
+        results.writeElementEnd();
         //
-
+        */
 
         /**
          * Budget
          */
-        results.writeElementStart();
+        results.writeCssElement("third");
+        results.writeElementStart("budget");
         results.writeTitle("Budget");
-        results.writeln("Initial budget : " + initialBudget);
+        results.writeln("Initial budget : <span>" + initialBudget+"</span");
         //
-        results.writeln("Remaining budget : " + currentBudget);
-        results.writeElementEnd();
+        results.writeln("Remaining budget : <span>" + currentBudget+"</span>");
+        results.writeEnd();
         //
 
 
         /**
          * Travel
          */
-        results.writeElementStart();
+        results.writeElementStart("travel");
         results.writeTitle("Travel");
         //
-        results.writeln("Length traveled : " + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles");
+        results.writeln("Length traveled : <span>" + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles </span>");
         //
-        results.writeln("Aerial length traveled : " + lengthTraveledAerial + " tiles");
+        results.writeln("Aerial length traveled : <span>" + lengthTraveledAerial + " tiles </span>");
         //
-        results.writeln("Terrestrial length traveled : " + lengthTraveledTerrestrial + " tiles");
-        results.writeElementEnd();
+        results.writeln("Terrestrial length traveled : <span>" + lengthTraveledTerrestrial + " tiles </span>");
+        results.writeEnd();
+        results.writeEnd();
         //
 
 
         /**
          * Resources
          */
-        results.writeElementStart();
+        results.writeCssElement("third");
+        results.writeElementStart("resources");
         results.writeTitle("Resources");
         //
         results.writeln("Needed resources : ");
+        results.writeUl();
         for (Map.Entry<String, Integer> entry : neededResources.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            results.write(key + " (" + value + ") ");
+            results.writeInLi(key + " <span>" + value + "</span> ",key);
         }
-        results.write("Collected resource : ");
+        results.writeUlEnd();
+        results.write("Collected resources : ");
+        results.writeUl();
         for (Map.Entry<String, Integer> entry : collectedResources.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
-            results.write(key + " (" + value + ") ");
+            results.writeInLi(key + " <span>" + value + "</span>",key);
         }
-        results.writeElementEnd();
+        results.writeUlEnd();
+        results.writeEnd();
+        results.writeEnd();
 
 
         /**
          * Costs
          */
-        results.writeElementStart();
+        results.writeCssElement("third");
+        results.writeElementStart("costs");
         results.writeTitle("Costs");
         int init = Integer.parseInt(initialBudget);
         float aerialpart = round((float)aerialCost/init*100,2);
-        results.writeln("Part of aerial cost : "+aerialpart+"%");
+        results.writeln("Part of aerial cost :<span> "+aerialpart+"%</span>");
         //
         float terrpart = round((float)terrestrialCost/init*100,2);
-        results.writeln("Part of terrestrial cost : "+terrpart+"%");
+        results.writeln("Part of terrestrial cost : <span>"+terrpart+"% </span>");
         //
         int total = 0;
         ActionsCost = sortByValue(ActionsCost);
@@ -113,14 +124,18 @@ public class DataMeter {
             total += entry.getValue();
         }
         results.writeln("Cost per action : ");
+        results.writeUl();
         for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
             float ratio = round((float)value/total*100,2);
-            results.writeln("    "+key + " : " + value + " - ("+ratio+"%)");
+            StringBuilder sb= new StringBuilder(key);
+            results.writeInLi(sb.toString().toUpperCase() + " : <span>" + value + " ("+ratio+"%)</span>",key);
         }
+        results.writeUlEnd();
         //
-        results.writeElementEnd();
+        results.writeEnd();
+        results.writeEnd();
 
         results.close();
     }
