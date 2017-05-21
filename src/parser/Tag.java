@@ -3,6 +3,11 @@ package parser;
 import org.json.JSONObject;
 import parser.tagBuilder.*;
 
+/**
+ * contains all the tag that the parser can compute
+ * each actions can return the appropriate builder in order to convert json to xml
+ */
+
 public enum Tag {
     FLY("fly") {
         @Override

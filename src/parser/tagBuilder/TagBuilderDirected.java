@@ -5,6 +5,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+/**
+ * superclass of all TagBuilder where the only action parameter is a direction
+ */
+
 public abstract class TagBuilderDirected extends TagBuilder{
     public TagBuilderDirected(JSONObject request, JSONObject answer, String name,int id) {
         super(request, answer, name,id);

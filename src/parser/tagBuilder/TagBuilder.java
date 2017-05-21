@@ -4,6 +4,11 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+/**
+ * the superclass of all TagBuilder
+ * contain a basic transformation from json to xml made by all the TagBuilder
+ */
+
 public abstract class TagBuilder {
     protected JSONObject request;
     protected JSONObject answer;
@@ -17,6 +22,11 @@ public abstract class TagBuilder {
         this.id = (id-1)/2;
     }
 
+    /**
+     * convert json action to xml
+     * @param doc doc to build xml
+     * @return xml element obtained from json
+     */
     public Element getActionXml(Document doc){
         Element element = doc.createElement(Constant.request);
         Element data = doc.createElement(Constant.data);
@@ -34,6 +44,12 @@ public abstract class TagBuilder {
 
         return element;
     }
+
+    /**
+     * convert json answer to xml
+     * @param doc doc to build xml
+     * @return xml element obtained from json
+     */
     public Element getAnswerXml(Document doc) {
         Element element = doc.createElement(Constant.answer);
 
