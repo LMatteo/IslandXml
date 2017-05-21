@@ -1,0 +1,392 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "part",
+      "time",
+      "meth",
+      "data"
+    ],
+    "properties": {
+      "part": {
+        "type": "string",
+        "enum": [
+          "Engine",
+          "Explorer"
+        ]
+      },
+      "time": {
+        "type": "integer"
+      },
+      "meth": {
+        "type": "string",
+        "enum": [
+          "initialize",
+          "takeDecision"
+        ]
+      },
+      "data": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "heading",
+              "men",
+              "contracts",
+              "budget",
+            ],
+            "properties": {
+              "heading": {
+                "type": "string",
+                "enum": [
+                  "E",
+                  "W",
+                  "N",
+                  "S"
+                ]
+              },
+              "men": {
+                "type": "integer"
+              },
+              "budget": {
+                "type": "integer"
+              },
+              "contracts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "resource": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "amount",
+                    "resource"
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "action"
+            ],
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "fly",
+                  "echo",
+                  "heading",
+                  "scan",
+                  "stop",
+                  "land",
+                  "move_to",
+                  "scout",
+                  "glimpse",
+                  "explore",
+                  "exploit",
+                  "transform"
+                ]
+              },
+              "parameters": {
+                "type": "object",
+                "anyOf": [
+                  {
+                    "direction": {
+                      "type": "string",
+                      "enum": [
+                        "N",
+                        "S",
+                        "E",
+                        "W"
+                      ]
+                    }
+                  },
+                  {
+                    "creek": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "people": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "range": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "resource": {
+                      "type": "string",
+                      "enum": [
+                        "FISH",
+                        "FLOWER",
+                        "FRUITS",
+                        "FUR",
+                        "ORE",
+                        "QUARTZ",
+                        "SUGAR_CANE",
+                        "WOOD"
+                      ]
+                    }
+                  },
+                  {
+                    "FISH": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "FLOWER": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "FRUITS": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "FUR": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "ORE": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "QUARTZ": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "SUGAR_CANE": {
+                      "type": "integer"
+                    }
+                  },
+                  {
+                    "WOOD": {
+                      "type": "integer"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "cost",
+              "extras",
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "OK",
+                  "KO"
+                ]
+              },
+              "cost": {
+                "type": "integer"
+              },
+              "extras": {
+                "type": "object",
+                "properties": {
+                  "range": {
+                    "type": "integer"
+                  },
+                  "found": {
+                    "type": "string",
+                    "enum": [
+                      "OUT_OF_RANGE",
+                      "GROUND"
+                    ]
+                  },
+                  "creeks": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "sites": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "biomes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "OCEAN",
+                        "LAKE",
+                        "BEACH",
+                        "GRASSLAND",
+                        "MANGROVE",
+                        "TROPICAL_RAIN_FOREST",
+                        "TROPICAL_SEASONAL_FOREST",
+                        "TEMPERATE_DECIDUOUS_FOREST",
+                        "TEMPERATE_RAIN_FOREST",
+                        "TEMPERATE_DESERT",
+                        "TAIGA",
+                        "SNOW",
+                        "TUNDRA",
+                        "ALPINE",
+                        "GLACIER",
+                        "SHRUBLAND",
+                        "SUB_TROPICAL_DESERT"
+                      ]
+                    }
+                  },
+                  "altitude": {
+                    "type": "integer"
+                  },
+                  "resources": {
+                    "type": "string",
+                    "enum": [
+                      "FISH",
+                      "FLOWER",
+                      "FRUITS",
+                      "FUR",
+                      "ORE",
+                      "QUARTZ",
+                      "SUGAR_CANE",
+                      "WOOD"
+                    ]
+                  },
+                  "asked_range": {
+                    "type": "integer"
+                  },
+                  "report": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "OCEAN",
+                              "LAKE",
+                              "BEACH",
+                              "GRASSLAND",
+                              "MANGROVE",
+                              "TROPICAL_RAIN_FOREST",
+                              "TROPICAL_SEASONAL_FOREST",
+                              "TEMPERATE_DECIDUOUS_FOREST",
+                              "TEMPERATE_RAIN_FOREST",
+                              "TEMPERATE_DESERT",
+                              "TAIGA",
+                              "SNOW",
+                              "TUNDRA",
+                              "ALPINE",
+                              "GLACIER",
+                              "SHRUBLAND",
+                              "SUB_TROPICAL_DESERT"
+                            ]
+                          },
+                          {
+                            "type": "integer"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "pois": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "kind",
+                        "id"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "resources": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "amount",
+                        "resource",
+                        "cond"
+                      ],
+                      "properties": {
+                        "amount": {
+                          "type": "string"
+                        },
+                        "resource": {
+                          "type": "string",
+                          "enum": [
+                            "FISH",
+                            "FLOWER",
+                            "FRUITS",
+                            "FUR",
+                            "ORE",
+                            "QUARTZ",
+                            "SUGAR_CANE",
+                            "WOOD"
+                          ]
+                        },
+                        "cond": {
+                          "type": "string",
+                          "enum": [
+                            "HARSH",
+                            "EASY",
+                            "FAIR"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "production": {
+                    "type": "integer"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "FISH",
+                      "FLOWER",
+                      "FRUITS",
+                      "FUR",
+                      "ORE",
+                      "QUARTZ",
+                      "SUGAR_CANE",
+                      "WOOD"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
