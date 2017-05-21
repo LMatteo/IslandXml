@@ -158,6 +158,7 @@ public enum Analyser {
 
                 }
             }
+            meter.contractCompletion();
 
 
         }

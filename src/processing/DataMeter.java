@@ -224,4 +224,24 @@ public class DataMeter {
         terrestrialCost+=n;
     }
 
+    public Map<String,Float> contractCompletion(){
+        Map<String,Float> completion = new HashMap<>();
+
+        List<Map.Entry<String,Float>> list = new LinkedList(neededResources.entrySet());
+
+        for (Map.Entry entry : list){
+            if(collectedResources.containsKey(entry.getKey())){
+                int collected = collectedResources.get(entry.getKey());
+                float percentage = ((float)collected/(int)entry.getValue())*100;
+                completion.put((String)entry.getKey(),percentage);
+            }else {
+                completion.put((String) entry.getKey(), new Float("0.0"));
+            }
+        }
+
+        return completion;
+
+
+    }
+
 }
