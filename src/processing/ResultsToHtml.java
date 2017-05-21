@@ -1,4 +1,5 @@
-package processing.results;
+package processing;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,7 +7,7 @@ import java.io.PrintWriter;
 /**
  * Created by Josué on 17/05/2017.
  */
-public class ResultsToHtml implements Results {
+public class ResultsToHtml{
 
     private PrintWriter writer;
 
@@ -47,12 +48,10 @@ public class ResultsToHtml implements Results {
     }
 
 
-    @Override
     public void write(String s) {
         writer.print("<p>"+s+"<p>");
     }
 
-    @Override
     public void writeln(String s) {
         writer.println("<p>"+s+"<p>");
     }
@@ -71,7 +70,7 @@ public class ResultsToHtml implements Results {
     public void closeHTML(){
         writer.println("</div></body></html>");
     }
-    @Override
+
     public void close() {
         closeHTML();
         writer.close();

@@ -69,7 +69,7 @@ public class TagExplore extends TagBuilder {
 
             Element kind = doc.createElement(Constant.kind);
             kind.appendChild(doc.createTextNode(current.getString(Constant.kind)));
-            zone.appendChild(zone);
+            zone.appendChild(kind);
 
             Element id = doc.createElement(Constant.id);
             id.appendChild(doc.createTextNode(current.getString(Constant.id)));

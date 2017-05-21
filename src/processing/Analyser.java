@@ -77,12 +77,14 @@ public enum Analyser {
                     land = true;
                 }
                 if (!land) {
+                    /*
                     if (action.equals("fly") |
                             action.equals("heading") |
                             action.equals("scan") |
                             action.equals("echo")) {
                         meter.aerialCostPlus(Integer.parseInt(cost));
-                    }
+                    }*/
+                    meter.aerialCostPlus(Integer.parseInt(cost));
                 }
             }
         }
@@ -101,6 +103,7 @@ public enum Analyser {
                     land = true;
                 }
                 if (land) {
+                    /*
                     if (action.equals("move_to") |
                             action.equals("scout") |
                             action.equals("explore") |
@@ -108,7 +111,9 @@ public enum Analyser {
                             action.equals("transform") |
                             action.equals("glimpse")) {
                         meter.terrestrialCostPlus(Integer.parseInt(cost));
-                    }
+                    }*/
+                    meter.terrestrialCostPlus(Integer.parseInt(cost));
+
                 }
             }
         }

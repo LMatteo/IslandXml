@@ -1,7 +1,5 @@
 package processing;
 
-import processing.results.ResultsToHtml;
-
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -39,15 +37,6 @@ public class DataMeter {
 
     public void print() {
         ResultsToHtml results = new ResultsToHtml();
-        //
-        /*
-        results.writeElementStart("initialisation");
-        results.writeTitle("Initialisation");
-        //
-        results.writeln("Number of men : " + men);
-        results.writeElementEnd();
-        //
-        */
 
         /**
          * Budget
@@ -101,6 +90,10 @@ public class DataMeter {
             results.writeInLi(key + " <span>" + value + "</span>",key);
         }
         results.writeUlEnd();
+        results.writeCssElement("highlight");
+        results.writeln("Contracts completion : ");
+        results.writeln("<div id='percentage'>"+contractCompletion()+"%</div>");
+        results.writeEnd();
         results.writeEnd();
         results.writeEnd();
 
@@ -111,18 +104,19 @@ public class DataMeter {
         results.writeCssElement("third");
         results.writeElementStart("costs");
         results.writeTitle("Costs");
-        int init = Integer.parseInt(initialBudget);
-        float aerialpart = round((float)aerialCost/init*100,2);
-        results.writeln("Part of aerial cost :<span> "+aerialpart+"%</span>");
-        //
-        float terrpart = round((float)terrestrialCost/init*100,2);
-        results.writeln("Part of terrestrial cost : <span>"+terrpart+"% </span>");
-        //
         int total = 0;
         ActionsCost = sortByValue(ActionsCost);
         for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
             total += entry.getValue();
         }
+
+        float aerialpart = round((float)aerialCost/total*100,2);
+        results.writeln("Part of aerial cost :<span> "+aerialpart+"%</span>");
+        //
+        float terrpart = round((float)terrestrialCost/total*100,2);
+        results.writeln("Part of terrestrial cost : <span>"+terrpart+"% </span>");
+        //
+
         results.writeln("Cost per action : ");
         results.writeUl();
         for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
@@ -224,23 +218,39 @@ public class DataMeter {
         terrestrialCost+=n;
     }
 
-    public Map<String,Float> contractCompletion(){
-        Map<String,Float> completion = new HashMap<>();
 
-        List<Map.Entry<String,Float>> list = new LinkedList(neededResources.entrySet());
+    public float contractCompletion(){
+        Map<String,Integer> expected = new HashMap<>(neededResources);
+        Map<String,Integer> recolted = new HashMap<>(collectedResources);
 
-        for (Map.Entry entry : list){
-            if(collectedResources.containsKey(entry.getKey())){
-                int collected = collectedResources.get(entry.getKey());
-                float percentage = ((float)collected/(int)entry.getValue())*100;
-                completion.put((String)entry.getKey(),percentage);
-            }else {
-                completion.put((String) entry.getKey(), new Float("0.0"));
+        int initial = 0;
+        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
+            initial += entry.getValue();
+        }
+
+        for(Map.Entry<String,Integer> entry : recolted.entrySet()){
+            String key = entry.getKey();
+            int qte = entry.getValue();
+            if(expected.containsKey(key)){
+                int t = expected.get(key)-qte;
+                if(t<=0){
+                    expected.put(key,0);
+                } else {
+                    expected.put(key,t);
+
+                }
             }
         }
 
-        return completion;
+        int ending = 0;
+        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
+            ending += entry.getValue();
+        }
 
+        // rapport entre "ce qu'on a rapporté" et "ce qu'on devait rapporter"
+        float result = 100-(float)ending/initial*100;
+        result = round(result,2);
+        return result;
 
     }
 
