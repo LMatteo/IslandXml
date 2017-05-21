@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.util.*;
 
 /**
- * Created by Josué on 18/05/2017.
+ * This class contains everything that we want
+ * to meter in the process, and the specific
+ * print for HTML.
  */
 public class DataMeter {
 
@@ -134,6 +136,11 @@ public class DataMeter {
         results.close();
     }
 
+    /**
+     *  add a collected resource to the map
+     * @param res the collected resource
+     * @param qte the collected quantity
+     */
     public void gatherResource(String res, int qte) {
         int newQty;
         if (collectedResources.containsKey(res)) {
@@ -144,10 +151,53 @@ public class DataMeter {
         collectedResources.put(res, newQty);
     }
 
+    /**
+     * remove a collected resource of the map
+     * used for transformation of resources
+     */
     public void removeResource(String res, int qte) {
         int newQty = collectedResources.get(res) - qte;
         collectedResources.put(res, newQty);
     }
+
+
+    /**
+     * calculates the percentage of contracts collected
+     */
+    public float contractCompletion(){
+        Map<String,Integer> expected = new HashMap<>(neededResources);
+        Map<String,Integer> recolted = new HashMap<>(collectedResources);
+
+        int initial = 0;
+        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
+            initial += entry.getValue();
+        }
+
+        for(Map.Entry<String,Integer> entry : recolted.entrySet()){
+            String key = entry.getKey();
+            int qte = entry.getValue();
+            if(expected.containsKey(key)){
+                int t = expected.get(key)-qte;
+                if(t<=0){
+                    expected.put(key,0);
+                } else {
+                    expected.put(key,t);
+
+                }
+            }
+        }
+
+        int ending = 0;
+        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
+            ending += entry.getValue();
+        }
+
+        // rapport entre "ce qu'on a rapporté" et "ce qu'on devait rapporter"
+        float result = 100-(float)ending/initial*100;
+        result = round(result,2);
+        return result;
+    }
+
 
     public void actionPlus(String res, int qte) {
         int q;
@@ -165,6 +215,9 @@ public class DataMeter {
         return bd.floatValue();
     }
 
+    /**
+     * sort a map
+     */
     private static <K, V> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
         Collections.sort(list, new Comparator<Object>() {
@@ -218,40 +271,5 @@ public class DataMeter {
         terrestrialCost+=n;
     }
 
-
-    public float contractCompletion(){
-        Map<String,Integer> expected = new HashMap<>(neededResources);
-        Map<String,Integer> recolted = new HashMap<>(collectedResources);
-
-        int initial = 0;
-        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
-            initial += entry.getValue();
-        }
-
-        for(Map.Entry<String,Integer> entry : recolted.entrySet()){
-            String key = entry.getKey();
-            int qte = entry.getValue();
-            if(expected.containsKey(key)){
-                int t = expected.get(key)-qte;
-                if(t<=0){
-                    expected.put(key,0);
-                } else {
-                    expected.put(key,t);
-
-                }
-            }
-        }
-
-        int ending = 0;
-        for (Map.Entry<String, Integer> entry : expected.entrySet()) {
-            ending += entry.getValue();
-        }
-
-        // rapport entre "ce qu'on a rapporté" et "ce qu'on devait rapporter"
-        float result = 100-(float)ending/initial*100;
-        result = round(result,2);
-        return result;
-
-    }
 
 }

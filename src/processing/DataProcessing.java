@@ -11,6 +11,13 @@ import java.io.File;
  */
 public class DataProcessing {
 
+    /**
+     * This program enables to translate a XML file
+     * into serious data processing. This is the best
+     * way to get a designed feed-back and a strong
+     * analyse of your run.
+     */
+
     public static void main(String[] args) throws Exception {
 
         String fileName = args[0];

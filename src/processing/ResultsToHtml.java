@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Josué on 17/05/2017.
+ * This class manages the creation and the filling
+ * of the HTML file, in which we write processed data
  */
 public class ResultsToHtml{
 

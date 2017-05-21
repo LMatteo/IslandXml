@@ -9,8 +9,10 @@ import parser.tagBuilder.Constant;
 import java.util.Map;
 
 /**
- * Created by Josué on 16/05/2017.
+ * This enumeration contains all the different analyses that we want
+ * to do. The program will run the execute() method for all of them.
  */
+
 public enum Analyser {
     NUMBER_OF_MEN {
         @Override
@@ -77,13 +79,6 @@ public enum Analyser {
                     land = true;
                 }
                 if (!land) {
-                    /*
-                    if (action.equals("fly") |
-                            action.equals("heading") |
-                            action.equals("scan") |
-                            action.equals("echo")) {
-                        meter.aerialCostPlus(Integer.parseInt(cost));
-                    }*/
                     meter.aerialCostPlus(Integer.parseInt(cost));
                 }
             }
@@ -103,15 +98,6 @@ public enum Analyser {
                     land = true;
                 }
                 if (land) {
-                    /*
-                    if (action.equals("move_to") |
-                            action.equals("scout") |
-                            action.equals("explore") |
-                            action.equals("exploit") |
-                            action.equals("transform") |
-                            action.equals("glimpse")) {
-                        meter.terrestrialCostPlus(Integer.parseInt(cost));
-                    }*/
                     meter.terrestrialCostPlus(Integer.parseInt(cost));
 
                 }
