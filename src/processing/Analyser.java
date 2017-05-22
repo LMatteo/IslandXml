@@ -14,13 +14,6 @@ import java.util.Map;
  */
 
 public enum Analyser {
-    NUMBER_OF_MEN {
-        @Override
-        public void execute(Document doc, DataMeter meter) {
-            Node init = doc.getElementsByTagName(Constant.men).item(0);
-            meter.setMen(init.getTextContent());
-        }
-    },
     RESOURCE_NEEDED {
         @Override
         public void execute(Document doc, DataMeter meter) {
@@ -37,6 +30,7 @@ public enum Analyser {
     INITIAL_BUDGET {
         @Override
         public void execute(Document doc, DataMeter meter) {
+
             Node init = doc.getElementsByTagName(Constant.budget).item(0);
             meter.setInitialBudget(init.getTextContent());
         }
@@ -159,6 +153,7 @@ public enum Analyser {
             for (int i = 3; i < nodes.getLength(); i += 4) {
                 Element request = (Element) nodes.item(i);
                 Element answer = (Element) nodes.item(i + 2);
+
                 String res = request.getElementsByTagName("action").item(0).getTextContent();
                 String qte = answer.getElementsByTagName("cost").item(0).getTextContent();
                 meter.actionPlus(res,Integer.parseInt(qte));

@@ -10,7 +10,6 @@ import java.util.*;
  */
 public class DataMeter {
 
-    private String men;
     private Map<String, Integer> neededResources;
     private Map<String, Integer> collectedResources;
     private String initialBudget;
@@ -20,11 +19,8 @@ public class DataMeter {
     private int aerialCost;
     private int terrestrialCost;
     private Map<String, Integer> ActionsCost;
-    //TODO
-    private String creek;
 
     public DataMeter() {
-        men = "";
         neededResources = new HashMap<>();
         collectedResources = new HashMap<>();
         initialBudget = "";
@@ -38,74 +34,74 @@ public class DataMeter {
 
 
     public void print() {
-        ResultsToHtml results = new ResultsToHtml();
+        HtmlWriter out = new HtmlWriter();
 
         /**
          * Budget
          */
-        results.writeCssElement("third");
-        results.writeElementStart("budget");
-        results.writeTitle("Budget");
-        results.writeln("Initial budget : <span>" + initialBudget+"</span");
+        out.writeCssElement("third");
+        out.writeElementStart("budget");
+        out.writeTitle("Budget");
+        out.writeln("Initial budget : <span>" + initialBudget+"</span");
         //
-        results.writeln("Remaining budget : <span>" + currentBudget+"</span>");
-        results.writeEnd();
+        out.writeln("Remaining budget : <span>" + currentBudget+"</span>");
+        out.writeEnd();
         //
 
 
         /**
          * Travel
          */
-        results.writeElementStart("travel");
-        results.writeTitle("Travel");
+        out.writeElementStart("travel");
+        out.writeTitle("Travel");
         //
-        results.writeln("Length traveled : <span>" + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles </span>");
+        out.writeln("Length traveled : <span>" + (lengthTraveledAerial+lengthTraveledTerrestrial) + " tiles </span>");
         //
-        results.writeln("Aerial length traveled : <span>" + lengthTraveledAerial + " tiles </span>");
+        out.writeln("Aerial length traveled : <span>" + lengthTraveledAerial + " tiles </span>");
         //
-        results.writeln("Terrestrial length traveled : <span>" + lengthTraveledTerrestrial + " tiles </span>");
-        results.writeEnd();
-        results.writeEnd();
+        out.writeln("Terrestrial length traveled : <span>" + lengthTraveledTerrestrial + " tiles </span>");
+        out.writeEnd();
+        out.writeEnd();
         //
 
 
         /**
          * Resources
          */
-        results.writeCssElement("third");
-        results.writeElementStart("resources");
-        results.writeTitle("Resources");
+        out.writeCssElement("third");
+        out.writeElementStart("resources");
+        out.writeTitle("Resources");
         //
-        results.writeln("Needed resources : ");
-        results.writeUl();
+        out.writeln("Needed resources : ");
+        out.writeUl();
         for (Map.Entry<String, Integer> entry : neededResources.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            results.writeInLi(key + " <span>" + value + "</span> ",key);
+            out.writeInLi(key + " <span>" + value + "</span> ",key);
         }
-        results.writeUlEnd();
-        results.write("Collected resources : ");
-        results.writeUl();
+        out.writeUlEnd();
+        out.write("Collected resources : ");
+        out.writeUl();
         for (Map.Entry<String, Integer> entry : collectedResources.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
-            results.writeInLi(key + " <span>" + value + "</span>",key);
+            out.writeInLi(key + " <span>" + value + "</span>",key);
         }
-        results.writeUlEnd();
-        results.writeCssElement("highlight");
-        results.writeln("Contracts completion : ");
-        results.writeln("<div id='percentage'>"+contractCompletion()+"%</div>");
-        results.writeEnd();
-        results.writeEnd();
-        results.writeEnd();
+        out.writeUlEnd();
+        out.writeCssElement("highlight");
+        out.writeln("Contracts completion : ");
+        out.writeln("<div id='percentage'>"+contractCompletion()+"%</div>");
+        out.writeEnd();
+        out.writeEnd();
+        out.writeEnd();
 
 
         /**
          * Costs
          */
-        results.writeCssElement("third");
-        results.writeElementStart("costs");
-        results.writeTitle("Costs");
+        out.writeCssElement("third");
+        out.writeElementStart("costs");
+        out.writeTitle("Costs");
         int total = 0;
         ActionsCost = sortByValue(ActionsCost);
         for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
@@ -113,27 +109,27 @@ public class DataMeter {
         }
 
         float aerialpart = round((float)aerialCost/total*100,2);
-        results.writeln("Part of aerial cost :<span> "+aerialpart+"%</span>");
+        out.writeln("Part of aerial cost :<span> "+aerialpart+"%</span>");
         //
         float terrpart = round((float)terrestrialCost/total*100,2);
-        results.writeln("Part of terrestrial cost : <span>"+terrpart+"% </span>");
+        out.writeln("Part of terrestrial cost : <span>"+terrpart+"% </span>");
         //
 
-        results.writeln("Cost per action : ");
-        results.writeUl();
+        out.writeln("Cost per action : ");
+        out.writeUl();
         for (Map.Entry<String, Integer> entry : ActionsCost.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
             float ratio = round((float)value/total*100,2);
             StringBuilder sb= new StringBuilder(key);
-            results.writeInLi(sb.toString().toUpperCase() + " : <span>" + value + " ("+ratio+"%)</span>",key);
+            out.writeInLi(sb.toString().toUpperCase() + " : <span>" + value + " ("+ratio+"%)</span>",key);
         }
-        results.writeUlEnd();
+        out.writeUlEnd();
         //
-        results.writeEnd();
-        results.writeEnd();
+        out.writeEnd();
+        out.writeEnd();
 
-        results.close();
+        out.close();
     }
 
     /**
@@ -236,9 +232,6 @@ public class DataMeter {
         return result;
     }
 
-    public void setMen(String men) {
-        this.men = men;
-    }
 
     public void setInitialBudget(String initialBudget) {
         this.initialBudget = initialBudget;
