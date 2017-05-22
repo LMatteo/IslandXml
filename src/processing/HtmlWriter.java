@@ -61,7 +61,7 @@ public class HtmlWriter {
         writer.println("<!doctype html>");
         writer.println("<html lang=\"fr\"");
         writer.println("<head><meta charset='utf-8'><title>Island Processing</title>");
-        writer.println("<link rel='stylesheet' href='style.css'");
+        writer.println("<link rel='stylesheet' href='style_html.css'");
         writer.println("</head>");
         writer.println("<body>");
         writer.println("<div class='container'>");

@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    text-align: center;
+}
+
+championship{
+    line-height: 30px;
+    margin:0 auto;
+    width:900px;
+}
+
+request, answer, initialization{
+    display: inline-block;
+    width:60%;
+    min-height: 100px;
+    text-align: center;
+}
+
+request{
+    display: inline;
+    height: 100%;
+    padding:10px;
+}
+
+answer{
+    margin-bottom: 35px;
+    padding:10px;
+    margin-top: 40px;
+    /*border-bottom: solid 5px #007acc;*/
+    box-shadow: 0px 18px 20px -8px rgba(138,133,138,1);
+}
+
+answer::after{
+    width: 300px;
+    height: 5px;
+    background-color: red;
+}
+
+initialization{
+    margin-top: 40px;
+        box-shadow: 0px 18px 20px -8px rgba(138,133,138,1);
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+action::before{
+    content:"Action : ";
+    text-transform: none;
+}
+
+
+direction{
+    line-height: 15px;
+}
+direction::before{
+    content:"Direction : ";
+}
+
+
+contracts::before{
+    content:"CONTRACTS TO COLLECT : ";
+}
+
+cost::before{
+    content:"Cost : ";
+}
+
+men::before{
+    content:"Men : ";
+}
+
+request action{
+    text-transform: uppercase;
+}
+
+
+ heading::before{
+    content: "INITIALIZATION : heading "
+}
+
+budget::before{
+    content:"Budget : ";
+}
+
+
+status, creek, time{
+    display: none;
+}
+
+found{
+    text-transform: lowercase;
+}
+found::first-letter{
+    text-transform: uppercase;
+}
+
+found::before{
+    content:"Found : ";
+}
+
+resource::before{
+    content:"Resource : ";
+}
+
+cond{
+    display:none;
+}
+
+range::before{
+    content: "Range : ";
+}
+
+biome::before{
+    content:"Biome : ";
+}
+
+amount::before{
+    content:"Amount : ";
+}
+
+quantity::before{
+    content:"Quantity : ";
+}
+
+production::before{
+    content:"Production : ";
+}
+
+kind::before{
+    content:"Kind : ";
+}
