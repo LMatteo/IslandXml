@@ -27,7 +27,7 @@ public class DataProcessing {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document document = db.parse(file);
-
+        document.removeChild(document.getFirstChild());
 
 
         DataMeter meter = new DataMeter();
