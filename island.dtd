@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE championship [
-		<!ELEMENT championship (initialization,(element)*)>
-		<!ELEMENT initialization (data,part,time,meth)>
-		<!ELEMENT element (data,part,time)>
+	<!ELEMENT championship (initialization,(request,answer)*)>
+		<!ELEMENT initialization (data,time,meth)>
+		<!ELEMENT request ((data,time))>
+		<!ELEMENT answer ((data,time))>
+		<!ATTLIST request step CDATA>
+		<!ATTLIST answer step CDATA>
 		<!ELEMENT data (cost,extras,status)>
+		<!ELEMENT cost (#PCDATA)>
+		<!ELEMENT status (#PCDATA)>
 		<!ELEMENT extras ((action|(heading,men,contracts,budget)|(action,parameters)|(range,found)|(biomes,creeks,sites)|(altitude,resources)|(report)|(exlorations,pois)|(production,kind))?)>
 		<!ELEMENT action (#PCDATA)>
-		<!ELEMENT part (Engine|Explorer)>
 		<!ELEMENT time (#PCDATA)>
-		<!ELEMENT meth (initialize|takeDecision)>
+		<!ELEMENT meth (#PCDATA)>
 		<!ELEMENT heading (#PCDATA)>
 		<!ELEMENT men (#PCDATA)>
 		<!ELEMENT contracts (contract)+>
+		<!ELEMENT contract (amount,resource)>
 		<!ELEMENT budget (#PCDATA)>
 		<!ELEMENT parameters ((direction,range)|(creek,people)|(unit)+)>
 		<!ELEMENT direction (#PCDATA)>
@@ -25,10 +30,12 @@
 		<!ELEMENT range (#PCDATA)>
 		<!ELEMENT found (#PCDATA)>
 		<!ELEMENT biomes (biome)*>
+		<!ELEMENT biome (#PCDATA)>
 		<!ELEMENT creeks (creek)*>
 		<!ELEMENT sites (site)*>
+		<!ELEMENT site (#PCDATA)>
 		<!ELEMENT altitude (#PCDATA)>
-		<!ELEMENT resources (resource|)*>
+		<!ELEMENT resources (resource)*>
 		<!ELEMENT asked_range (#PCDATA)>
 		<!ELEMENT report (tile)*>
 		<!ELEMENT tile ((resource,percentage)|resource)*>
@@ -43,4 +50,4 @@
 		<!ELEMENT id (#PCDATA)>
 		<!ELEMENT production (#PCDATA)>
 
-		]>
+]>
