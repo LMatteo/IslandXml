@@ -11,6 +11,8 @@ the input has to be well formed (following the island.schema) otherwise it will 
 
 output : myfile.xml
 
+the xml file can be open on a web browser, where you can enjoy the material design applied.
+
 
 DATA PROCESSING
 
@@ -19,3 +21,4 @@ java -jar IslandXml.jar data myfile.xml
 the input has to come from the above parser otherwise it will raise an error
 
 output : myfile.html
+
