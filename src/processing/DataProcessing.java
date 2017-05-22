@@ -21,6 +21,8 @@ public class DataProcessing {
     public static void main(String[] args) throws Exception {
 
         String fileName = args[0];
+
+
         File file = new File(fileName);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -34,7 +36,11 @@ public class DataProcessing {
             a.execute(document,meter);
         }
 
-        meter.print();
+
+        try{fileName = fileName.split("\\.")[0];}
+        catch (Exception e){}
+
+        meter.print(fileName+".html");
 
     }
 }

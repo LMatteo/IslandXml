@@ -12,9 +12,9 @@ public class HtmlWriter {
 
     private PrintWriter writer;
 
-    public HtmlWriter() {
+    public HtmlWriter(String filename) {
         try{
-            writer = new PrintWriter("process.html", "UTF-8");
+            writer = new PrintWriter(filename, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }

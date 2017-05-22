@@ -33,8 +33,8 @@ public class DataMeter {
     }
 
 
-    public void print() {
-        HtmlWriter out = new HtmlWriter();
+    public void print(String filename) {
+        HtmlWriter out = new HtmlWriter(filename);
 
         /**
          * Budget
