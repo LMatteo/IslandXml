@@ -10,7 +10,7 @@ java -jar IslandXml.jar parse myfile.json
 the input has to be well formed (following the island.schema) otherwise it will raise an error
 
 output : myfile.xml
--*
+
 the xml file can be open on a web browser, where you can enjoy the material design applied.
 
 
