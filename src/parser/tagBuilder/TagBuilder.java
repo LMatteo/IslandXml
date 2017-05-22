@@ -39,7 +39,6 @@ public abstract class TagBuilder {
         time.appendChild(doc.createTextNode(String.valueOf(request.getLong(Constant.time))));
         element.appendChild(time);
 
-        element.setAttribute(Constant.part,Constant.explorer);
         element.setAttribute(Constant.step,String.valueOf(id));
 
         return element;
@@ -74,7 +73,6 @@ public abstract class TagBuilder {
         time.appendChild(doc.createTextNode(String.valueOf(answer.getLong(Constant.time))));
         element.appendChild(time);
 
-        element.setAttribute(Constant.part,Constant.engine);
         element.setAttribute(Constant.step,String.valueOf(id));
 
         return element;
