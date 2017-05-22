@@ -8,11 +8,11 @@ import java.io.PrintWriter;
  * This class manages the creation and the filling
  * of the HTML file, in which we write processed data
  */
-public class ResultsToHtml{
+public class HtmlWriter {
 
     private PrintWriter writer;
 
-    public ResultsToHtml() {
+    public HtmlWriter() {
         try{
             writer = new PrintWriter("process.html", "UTF-8");
         } catch (IOException e) {
