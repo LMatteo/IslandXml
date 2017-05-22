@@ -14,6 +14,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 /*
     To compute json object we are using this library:
@@ -35,6 +36,8 @@ public class Parser {
 
         org.w3c.dom.Element rootElement = document.createElement(Constant.championship);
         document.appendChild(rootElement);
+        ProcessingInstruction pi = document.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"style_xml.css\"");
+        document.insertBefore(pi, rootElement);
 
 
         //ceating json from input file
@@ -111,7 +114,9 @@ public class Parser {
     private static void printXml(Document doc,String name) throws IOException,TransformerException{
 
         TransformerFactory tf = TransformerFactory.newInstance();
+        StreamSource stylesource = new StreamSource("style.css");
         Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
         transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
         transformer.setOutputProperty(OutputKeys.METHOD, "xml");
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
